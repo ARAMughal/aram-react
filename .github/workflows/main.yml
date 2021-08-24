@@ -14,9 +14,7 @@ jobs:
         run: npm install 
         
       - name: build Dependencies
-        run: npm
-      - name: Build
-        run: sduo npm run build
+        run: npm run build
 
       - name: deploy file to server
         uses: wlixcc/SFTP-Deploy-Action@v1.0
