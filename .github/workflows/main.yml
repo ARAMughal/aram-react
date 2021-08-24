@@ -18,7 +18,7 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Deploy React App
-        uses: actions/checkout@v2l
+        uses: actions/checkout@v2
         with: 
           host: ${{secrets.SSH_HOST}}
           key: ${{secrets.SSH_KEY}}
