@@ -17,11 +17,11 @@ jobs:
         run: npm build
 
       - name: deploy file to server
-        uses: appleboy/ssh-action@v0.1.2
+        uses: actions/checkout@v2
         with:
           username: '${{ secrets.SSH_USERNAME }}'
-          host: '${{ secrets.SSH_HOST }}'
-          key: '${{ secrets.SSH_KEY }}'
+          ssh-known-hosts: '${{ secrets.SSH_HOST }}'
+          ssh-key: '${{ secrets.SSH_KEY }}'
           local_path: './build/*'
           remote_path: '/home/aram/aram-react/myreact'
           args: '-o ConnectTimeout=5'
