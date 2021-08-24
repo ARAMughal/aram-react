@@ -12,7 +12,7 @@ jobs:
       - name: Install Dependencies
         run: npm
       - name: install
-        run: npm install
+        run: npm run install
 
       - name: build Dependencies
         run: npm
