@@ -1,6 +1,4 @@
-# This is a basic workflow to help you get started with Actions
-
-name: CI
+name: React_App
 
 # Controls when the workflow will run
 on:
@@ -17,7 +15,7 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - name: Deploy React App
+      - name: Deploy_React_App
         uses: actions/checkout@v2
         with: 
           host: ${{secrets.SSH_HOST}}
@@ -25,7 +23,7 @@ jobs:
           username: ${{secrets.SSH_USERNAME}}
           
           script: | 
-            cd /home/aram/aram-react/myreact
+            cd /home/aram/aram-react/
             git reset --hard
             git pull origin  main
             npm install
