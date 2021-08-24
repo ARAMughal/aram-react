@@ -9,10 +9,14 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
+
+      - name: install Dependencies
+        run: npm install 
+        
       - name: build Dependencies
         run: npm
       - name: Build
-        run: npm run build
+        run: sduo npm run build
 
       - name: deploy file to server
         uses: wlixcc/SFTP-Deploy-Action@v1.0
