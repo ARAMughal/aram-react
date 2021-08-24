@@ -19,10 +19,9 @@ jobs:
       - name: deploy file to server
         uses: actions/checkout@v2
         with:
-          username: '${{ secrets.SSH_USERNAME }}'
+          user: '${{ secrets.SSH_USERNAME }}'
           ssh-known-hosts: '${{ secrets.SSH_HOST }}'
           ssh-key: '${{ secrets.SSH_KEY }}'
-          local_path: './build/*'
-          remote_path: '/home/aram/aram-react/myreact'
+          path: '/home/aram/aram-react/myreact'
           args: '-o ConnectTimeout=5'
           
