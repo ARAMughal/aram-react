@@ -1,33 +1,31 @@
-name: React_App
-
-# Controls when the workflow will run
-on:
-  # Triggers the workflow on push or pull request events but only for the main branch
-  push:
-    branches: [ main ]
+on: [push]
 
 jobs:
-  # This workflow contains a single job called "build"
-  deploy:
-    # The type of runner that the job will run on
+  deploy_job:
     runs-on: ubuntu-latest
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
+    name: build&deploy
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - name: Deploy_React_App
+      # To use this repository's private action, you must check out the repository
+      - name: Checkout
         uses: actions/checkout@v2
-        with: 
-          host: ${{secrets.SSH_HOST}}
-          key: ${{secrets.SSH_KEY}}
-          username: ${{secrets.SSH_USERNAME}}
 
+      - name: Install Dependencies
+        run: npm
+      - name: install
+        run: npm install --save
+
+      - name: build Dependencies
+        run: npm
+      - name: Build
+        run: npm run build
+
+      - name: deploy file to server
+        uses: wlixcc/SFTP-Deploy-Action@v1.0
+        with:
+          username: '${{ secrets.SSH_USERNAME }}'
+          server: '${{ secrets.SSH_HOST }}'
+          ssh_private_key: '${{ secrets.SSH_KEY }}'
           local_path: './build/*'
           remote_path: '/home/aram/aram-react/myreact'
           args: '-o ConnectTimeout=5'
-          command: 'git reset --hard; git pull origin  main; npm install; npm run build; exit'
-            
-            
-            
-            
-            
+          
