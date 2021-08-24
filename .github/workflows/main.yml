@@ -19,7 +19,7 @@ jobs:
       - name: deploy file to server
         uses: actions/checkout@v2
         with:
-          name: '${{ secrets.SSH_USERNAME }}'
+          username: '${{ secrets.SSH_USERNAME }}'
           ssh-known-hosts: '${{ secrets.SSH_HOST }}'
           ssh-key: '${{ secrets.SSH_KEY }}'
           path: '/home/aram/aram-react/myreact'
