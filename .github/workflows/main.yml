@@ -17,7 +17,7 @@ jobs:
         run: npm build
 
       - name: deploy file to server
-        uses: appleboy/ssh-action@master
+        #uses: appleboy/ssh-action@master
         with:
           SSH_USERNAME: '${{ secrets.SSH_USERNAME }}'
           SSH_HOST: '${{ secrets.SSH_HOST }}'
