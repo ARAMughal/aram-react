@@ -13,7 +13,7 @@ jobs:
         run: npm build
 
       - name: deploy file to server
-        uses: wlixcc/SFTP-Deploy-Action@v1.0
+        uses: SFTP-Deploy-Action@v1.0
         with:
           username: '${{ secrets.SSH_USERNAME }}'
           server: '${{ secrets.SSH_HOST }}'
