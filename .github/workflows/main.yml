@@ -22,7 +22,7 @@ jobs:
         run: |
           TEMP=$(mktemp)
           echo "${{ secrets.SSH_KEY }}" > $TEMP
-          ssh -o 'StrictHostKeyChecking no' -i $TEMP root@143.198.131.117
+          ssh -o 'StrictHostKeyChecking no' -i $TEMP aram@143.198.131.117
           cd /var/www/aram-react/myreact
           git reset --hard
           git pull origin  main
