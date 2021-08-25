@@ -33,7 +33,7 @@ jobs:
         run: |
           TEMP=$(mktemp)
           echo "${{ secrets.SSH_KEY }}" > $TEMP
-          ssh -o 'StrictHostKeyChecking no' -i $TEMP  aram@143.198.131.117 "cd /home/aram/aram-react;git reset --hard;git pull origin  main;sudo npm install;sudo npm run build"
+          ssh -o 'StrictHostKeyChecking no' -i $TEMP  aram@143.198.131.117 "cd /home/aram/aram-react;git reset --hard;git pull origin  main;"
 
 
 #      - name: Deploy to server
