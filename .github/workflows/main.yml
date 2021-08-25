@@ -23,4 +23,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: |
-          sudo touch /var/www/aramtestFileforDeployment.txt
+          cd /var/www/aram-react/myreact
+          git reset --hard
+          git pull origin  main
+          npm install
+          npm run build
+          exit
