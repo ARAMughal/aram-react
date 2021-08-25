@@ -16,5 +16,5 @@ jobs:
         uses: digitalocean/action-doctl@v2
         with:
           token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
-          path: '/home/aram/aram-react/myreact'
-          args: '-o ConnectTimeout=5'
+      - name: Deploy to Server
+        run: cd /home/aram/aram-react/myreact && mkdir aramtestFileforDeployment
