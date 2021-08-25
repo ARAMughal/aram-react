@@ -31,9 +31,10 @@ jobs:
 
       - name: Deploy
         run: |
-          ssh-add <(echo "${{ secrets.SSH_KEY }}")
+          TEMP=$(mktemp)
+          echo "${{ secrets.SSH_KEY }}" > $TEMP
           rm -rf .git
-          ssh -o StrictHostKeyChecking=no aram@143.198.131.117 "cd /var/www/shopilam_project/shopilam;git reset --hard;git pull origin  main;npm install;npm run build"
+          ssh -o 'StrictHostKeyChecking no' -i $TEMP  aram@143.198.131.117 "cd /var/www/shopilam_project/shopilam;git reset --hard;git pull origin  main;npm install;npm run build"
 
 
 #      - name: Deploy to server
