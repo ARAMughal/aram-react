@@ -15,7 +15,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          ARAM React Website
+          This is ARAM React Website
         </a>
       </header>
     </div>
