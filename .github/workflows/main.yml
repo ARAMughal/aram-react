@@ -26,8 +26,7 @@ jobs:
           key: ${{ secrets.SSH_KEY}}
           command: |
             cd /var/www/aram-react/myreact
-            git reset --hard
-            git pull origin  main
-            npm install
-            npm run build
-            exit
+            sudo git reset --hard
+            sudo git pull origin  main
+            sudo npm install
+            sudo npm run build
