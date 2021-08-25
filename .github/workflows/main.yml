@@ -8,10 +8,6 @@ jobs:
       # To use this repository's private action, you must check out the repository
       - name: Checkout
         uses: actions/checkout@v2
-      - name: make directory and create file
-        run: touch aramtestFileforDeployment.txt
-      - name: Install Dependencies
-        run: npm build
 
       - name: Install doctl
         uses: digitalocean/action-doctl@v2
