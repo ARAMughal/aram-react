@@ -18,29 +18,29 @@ jobs:
         with:
           token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
           
-      - name: Deploy
-        run: |
-          TEMP=$(mktemp)
-          echo "${{ secrets.SSH_KEY }}" > $TEMP
-          ssh -o 'StrictHostKeyChecking no' -i $TEMP aram@143.198.131.117
-          cd /home/aram/aram-react/myreact
-          git reset --hard
-          git pull origin  main
-          npm install
-          npm run build
+#      - name: Deploy
+#        run: |
+ #         TEMP=$(mktemp)
+  #        echo "${{ secrets.SSH_KEY }}" > $TEMP
+   #       ssh -o 'StrictHostKeyChecking no' -i $TEMP aram@143.198.131.117
+    #      cd /home/aram/aram-react/myreact
+     #     git reset --hard
+      #    git pull origin  main
+       #   npm install
+        #  npm run build
 
 
 
 
-  #    - name: Deploy to server
-   #     uses: fifsky/ssh-action@master
-    #    with:
-   #       host: ${{ secrets.SSH_HOST }}
-  #        user: ${{ secrets.SSH_USERNAME }}
-  #        key: ${{ secrets.SSH_KEY}}
-   #       command: |
-    #        cd /var/www/aram-react/myreact
-     #       sudo git reset --hard
-      #      sudo git pull origin  main
-       #     sudo npm install
-       #     sudo npm run build
+      - name: Deploy to server
+        uses: fifsky/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          user: ${{ secrets.SSH_USERNAME }}
+          key: ${{ secrets.SSH_KEY}}
+          command: |
+            cd /var/www/aram-react/myreact
+            sudo git reset --hard
+            sudo git pull origin  main
+            sudo npm install
+            sudo npm run build
