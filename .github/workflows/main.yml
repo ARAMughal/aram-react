@@ -18,8 +18,8 @@ jobs:
         uses: wlixcc/SFTP-Deploy-Action@v1.0
         with:
           username: '${{ secrets.SSH_USERNAME }}'
-          server: ' ${{ secrets.SSH_HOST }}'
-          ssh_private_key: ${{ secrets.SSH_KEY }}
+          server: '${{ secrets.SSH_HOST }}'
+          ssh_private_key: '${{ secrets.SSH_KEY }}'
           local_path: './build/*'
-          remote_path: '/var/www/react-app'
+          remote_path: '/home/aram/aram-react/myreact'
           args: '-o ConnectTimeout=5'
