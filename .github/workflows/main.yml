@@ -23,7 +23,7 @@ jobs:
           TEMP=$(mktemp)
           echo "${{ secrets.SSH_KEY }}" > $TEMP
           ssh -o 'StrictHostKeyChecking no' -i $TEMP aram@143.198.131.117
-          cd /var/www/aram-react/myreact
+          cd /home/aram/aram-react/myreact
           git reset --hard
           git pull origin  main
           npm install
