@@ -27,8 +27,7 @@ jobs:
           command: |
             cd /tmp
             ls -a
-        
-        
+            touch testFile.txt
         
   build:
     runs-on: ubuntu-latest
