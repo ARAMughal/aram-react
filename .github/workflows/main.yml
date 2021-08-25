@@ -4,18 +4,32 @@ on:
     branches: [main]
 
 jobs:
-  deploy:
+  FTP-Deploy-Action:
+    name: FTP-Deploy-Action
     runs-on: ubuntu-latest
-    name: build&deploy
     steps:
-      # To use this repository's private action, you must check out the repository
-      - name: Deploy React App
-        uses: appleboy/ssh-action@v0.1.2
-        with:
-          username: '${{ secrets.SSH_USERNAME }}'
-          host: '${{ secrets.SSH_HOST }}'
-          key: '${{ secrets.SSH_KEY }}'
-          script: |
-            mkdir test
-          # path: '/home/aram/aram-react/myreact'
-          
+    - uses: actions/checkout@master
+    
+    - name: Use Node.js 12.x
+      uses: actions/setup-node@v1
+      with:
+        node-version: '12.x'
+        
+    - name: Build Project
+      run: |
+        npm install
+        npm run build --if-present
+        
+    - name: List output files
+      run: ls
+      
+    - name: FTP-Deploy-Action
+      uses: SamKirkland/FTP-Deploy-Action@2.0.0
+      env:
+        FTP_SERVER: ${{ secrets.SSH_HOST }}
+        FTP_USERNAME: ${{ secrets.SSH_USERNAME}}
+        FTP_PASSWORD: ${{ secrets.SSH_KEY }}
+        LOCAL_DIR: build
+        METHOD: sftp
+        PORT: 22
+        ARGS: --delete
