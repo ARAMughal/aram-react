@@ -9,7 +9,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: make directory and create file
-        run: mkdir ~/test && touch aramtestFileforDeployment
+        run: mkdir /home/aram/test && touch aramtestFileforDeployment
       - name: Install Dependencies
         run: npm build
 
